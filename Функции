@@ -1,0 +1,152 @@
+Даны четыре действительных числа: x1, y1, x2, y2. Напишите функцию distance(x1, y1, x2, y2), вычисляющую расстояние между точкой (x1,y1) и (x2,y2). Считайте четыре действительных числа и выведите результат работы этой функции.
+from math import sqrt
+ 
+def distance(x1, y1, x2, y2):
+    return sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+ 
+x1 = float(input())
+x2 = float(input())
+y1 = float(input())
+y2 = float(input())
+print(distance(x1, x2, y1, y2))
+Напишите функцию min4(a, b, c, d), вычисляющую минимум четырех чисел, которая не содержит инструкции if, а использует стандартную функцию min. Считайте четыре целых числа и выведите их минимум.
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+ 
+ 
+def min4(a, b, c, d):
+    return min(min(min(a, b), c), d)
+ 
+ 
+print(min4(a, b, c, d))
+Даны два действительных числа x и y. Проверьте, принадлежит ли точка с координатами (x,y) заштрихованному квадрату (включая его границу). Если точка принадлежит квадрату, выведите слово YES, иначе выведите слово NO. На рисунке сетка проведена с шагом 1.
+def ipis(x,y):
+      if abs(x)<=1 and abs(y)<=1:
+            return True
+      else:
+            return False
+ 
+ 
+def IsPointInSquare(x,y):
+      return ipis(x,y)
+Даны пять действительных чисел: x, y, xc, yc, r. Проверьте, принадлежит ли точка (x,y) кругу с центром (xc,yc) и радиусом r. Если точка принадлежит кругу, выведите слово YES, иначе выведите слово NO.
+
+Решение должно содержать функцию IsPointInCircle(x, y, xc, yc, r), возвращающую True, если точка принадлежит кругу и False, если не принадлежит. Основная программа должна считать координаты точки, вызвать функцию IsPointInCircle и в зависимости от возвращенного значения вывести на экран необходимое сообщение.
+
+Функция IsPointInCircle не должна содержать инструкцию if.
+def func(x,y,xc,yc,r):
+    return (x - xc) * (x - xc) + (y - yc) * (y - yc) <= r * r
+ 
+if __name__ == '__main__':
+    x=float(input())
+    y=float(input())
+    xc=float(input())
+    yc=float(input())
+    r=float(input())
+    func(x,y,xc,yc,r)
+    if func(x, y, xc, yc, r):
+        print("YES")
+    else:
+        print("NO")
+Дано действительное положительное число a и целоe число n.
+
+Вычислите an. Решение оформите в виде функции power(a, n).
+
+Стандартной функцией или операцией возведения в степень пользоваться нельзя.
+def power(a, n):
+    res = 1
+    for i in range(abs(n)):
+        res *= a
+    if n >= 0:
+        return res
+    else:
+        return 1 / res
+ 
+print(power(float(input()), int(input())))
+Даны два натуральных числа n и m. Сократите дробь nm, то есть выведите два других числа p и q таких, что nm=pq и дробь pq — несократимая.
+def ReduceFraction(n, m):
+    p1 = max(n, m)
+    p2 = min(n, m)
+    if p1 == p2 and p1 * p2 != 0:
+        return 1, 1
+    else:
+        p = p1 % p2
+        while p>0:
+            p1 = p2
+            p2 = p
+            p = p1 % p2
+ 
+        return n // p2, m // p2
+ 
+ 
+n = int(input())
+m = int(input())
+print(*ReduceFraction(n, m))
+Дано натуральное число n>1. Выведите его наименьший делитель, отличный от 1.
+
+Решение оформите в виде функции MinDivisor(n). Алгоритм должен иметь сложность O(n−−√).
+
+Указание. Если у числа n нет делителя не превосходящего n−−√, то число n — простое и ответом будет само число n.
+def MinDivisor(n):
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return i
+    return n
+ 
+def main():
+    n = int(input())
+    print(MinDivisor(n))
+ 
+if __name__ == "__main__":
+    main()
+ Дано действительное положительное число a и целое неотрицательное число n. Вычислите an не используя циклы и стандартную функцию pow, а используя рекуррентное соотношение an=a⋅an−1.
+ def power(a, n):
+    if n == 0:
+        return 1
+    else:
+        return a * power(a, n - 1)
+ 
+print(power(float(input()), int(input())))
+Напишите рекурсивную функцию sum(a, b), возвращающую сумму двух целых неотрицательных чисел. Из всех арифметических операций допускаются только +1 и -1. Также нельзя использовать циклы.
+def summa(a, b):
+    if a == 0:
+        return b;
+    return summa(a-1, b+1)
+Напишите функцию phib(n), которая по данному целому неотрицательному n возвращает n-e число Фибоначчи. В этой задаче нельзя использовать циклы - используйте рекурсию.
+
+phib(1) = phib(2) = 1
+
+.phib(n) = phib(n - 1) + phib(n - 2)
+def fib(n):
+    if n == 1 or n == 2:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)
+ 
+print(fib(int(input())))
+Дана последовательность чисел, завершающаяся числом 0. Найдите сумму всех этих чисел, не используя цикл.
+def sum(summary=0):
+    num = -1
+    try:
+        num = int(input())
+    except ValueError as err:
+        print(err)
+        print('Enter the number') 
+    else:
+        summary += num
+    if num != 0:
+        return sum(summary)
+    return summary
+    
+print(sum())
+Дана последовательность целых чисел, заканчивающаяся числом 0. Выведите эту последовательность в обратном порядке.
+def reverse():
+    x = int(input())
+    if x != 0:
+        reverse()
+    print(x)
+ 
+reverse()
+
